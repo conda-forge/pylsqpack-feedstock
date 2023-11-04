@@ -1,5 +1,5 @@
 {% set name = "pylsqpack" %}
-{% set version = "0.3.17" %}
+{% set version = "0.3.18" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pylsqpack-{{ version }}.tar.gz
-  sha256: 2f20778db956dc7e4b1a8a79722d57a4650c45997fb65c1352cbf85eb7aa3ce2
+  sha256: 45ae55e721877505f4d5ccd49591d69353f2a548a8673dfafb251d385b3c097f
 
 build:
   skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 0
 
 requirements:
   build:
