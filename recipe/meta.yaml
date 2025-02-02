@@ -1,13 +1,13 @@
 {% set name = "pylsqpack" %}
-{% set version = "0.3.18" %}
+{% set version = "0.3.19" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pylsqpack-{{ version }}.tar.gz
-  sha256: 45ae55e721877505f4d5ccd49591d69353f2a548a8673dfafb251d385b3c097f
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pylsqpack-{{ version }}.tar.gz
+  sha256: 529fa3e3d6f1b0eec92b434503c0ec551cb714023cc1710911f665fab6a86ebd
 
 build:
   skip: true  # [py<37]
@@ -19,6 +19,7 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - python
     - setuptools
