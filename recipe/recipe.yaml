@@ -17,19 +17,19 @@ source:
 build:
   number: 0
   skip: not (is_abi3 and match(python, python_min ~ ".*"))
-  script:
-    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
   python:
     version_independent: true
+  script:
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
 
 requirements:
   build:
+    - ${{ compiler("c") }}
+    - ${{ stdlib("c") }}
     - if: build_platform != target_platform
       then:
         - cross-python_${{ target_platform }}
         - python
-    - ${{ compiler('c') }}
-    - ${{ stdlib("c") }}
   host:
     - pip
     - python
@@ -40,9 +40,7 @@ requirements:
 
 tests:
   - python:
-      imports:
-        - pylsqpack
-        - pylsqpack._binding
+      imports: pylsqpack
       pip_check: true
       python_version:
         - ${{ python_min }}.*
