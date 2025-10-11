@@ -9,6 +9,8 @@ Package license: MIT AND BSD-3-Clause
 
 Summary: Python wrapper for the ls-qpack QPACK library
 
+Documentation: https://pylsqpack.readthedocs.io/
+
 Current build status
 ====================
 
