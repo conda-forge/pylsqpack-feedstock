@@ -65,6 +65,7 @@ about:
     - LICENSE
     - vendor/ls-qpack/LICENSE
   homepage: https://github.com/aiortc/pylsqpack
+  documentation: https://pylsqpack.readthedocs.io
 
 extra:
   recipe-maintainers:
