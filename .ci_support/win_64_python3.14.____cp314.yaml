@@ -3,19 +3,15 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
-is_abi3:
-- true
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
-python_min:
-- '3.10'
+- 3.14.* *_cp314
 target_platform:
 - win-64
 zip_keys:

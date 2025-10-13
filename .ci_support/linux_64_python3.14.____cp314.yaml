@@ -6,28 +6,22 @@ c_stdlib:
 - sysroot
 c_stdlib_version:
 - '2.17'
+cdt_name:
+- conda
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma9
-is_abi3:
-- true
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
-python_min:
-- '3.10'
+- 3.14.* *_cp314
 target_platform:
-<<<<<<< HEAD:.ci_support/linux_ppc64le_python3.10.____cpython.yaml
-- linux-ppc64le
-=======
 - linux-64
 zip_keys:
 - - python
   - channel_sources
->>>>>>> upstream/main:.ci_support/linux_64_python3.12.____cpython.yaml
