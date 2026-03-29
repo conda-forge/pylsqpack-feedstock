@@ -6,11 +6,11 @@ context:
   python_check_max: "3.14"
   abi3_ext: ${{ "pyd" if win else "abi3.so" }}
   unix_sp_dir: |-
-    $(python -c "print(__import__('site').getsitepackages()[-1])")/jsonschema_rs
+    $PREFIX/lib/python${{ python_min }}/site-packages/
   win_sp_dir: |-
-    Lib\site-packages\jsonschema_rs
+    Lib\site-packages\
   sp_dir: |-
-    ${{ "%PREFIX%\\" ~ win_sp_dir if win else unix_sp_dir }}
+    ${{ "%PREFIX%\\" ~ win_sp_dir if win else unix_sp_dir }}pylsqpack
   cov_fail_under: "100"
 
 package:
@@ -62,6 +62,7 @@ tests:
         requirements:
           run:
             - abi3audit
+            - python ${{ python_min }}.*
     else:
       - python:
           imports: pylsqpack._binding
@@ -73,11 +74,15 @@ tests:
       run:
         - coverage
         - pytest
-        - python ${{ python_min }}.*
+        - mypy
+        - if: is_abi3
+          then:
+            - python ${{ python_min }}.*
     script:
       - coverage run --source=pylsqpack --branch -m pytest -vv --tb=long --color=yes
       - if: linux
         then: coverage report --show-missing --skip-covered --fail-under=${{ cov_fail_under }}
+      - mypy -p pylsqpack
 
 about:
   summary: Python wrapper for the ls-qpack QPACK library
