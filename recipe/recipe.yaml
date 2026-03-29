@@ -18,7 +18,7 @@ build:
   number: 0
   skip: not (is_abi3 and match(python, python_min ~ ".*"))
   python:
-    version_independent: true
+    version_independent: ${{ is_abi3 }}
   script:
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
 
@@ -33,20 +33,26 @@ requirements:
   host:
     - pip
     - python
-    - python-abi3
     - setuptools
+    - if: is_abi3
+      then:
+        - python-abi3
   run:
     - python
 
 tests:
-  - python:
-      imports:
-        - pylsqpack
-        - pylsqpack._binding
-      pip_check: true
-      python_version:
-        - ${{ python_min }}.*
-        - ${{ python_check_max }}.*
+  - if: is_abi3
+    then:
+      - python:
+          imports: pylsqpack._binding
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
+    else:
+      - python:
+          imports: pylsqpack._binding
+          pip_check: true
   - files:
       source:
         - tests/
@@ -66,7 +72,8 @@ about:
   license_file:
     - LICENSE
     - vendor/ls-qpack/LICENSE
-  homepage: https://github.com/aiortc/pylsqpack
+  homepage: https://pypi.org/project/pylsqpack
+  repository: https://github.com/aiortc/pylsqpack
   documentation: https://pylsqpack.readthedocs.io
 
 extra:
