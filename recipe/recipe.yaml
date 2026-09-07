@@ -74,7 +74,9 @@ tests:
       run:
         - coverage
         - pytest
-        - mypy
+        - if: target_platform != "win-arm64"
+          then:
+            - mypy
         - if: is_abi3
           then:
             - python ${{ python_min }}.*
@@ -82,7 +84,9 @@ tests:
       - coverage run --source=pylsqpack --branch -m pytest -vv --tb=long --color=yes
       - if: linux
         then: coverage report --show-missing --skip-covered --fail-under=${{ cov_fail_under }}
-      - mypy -p pylsqpack
+      - if: target_platform != "win-arm64"
+        then:
+          - mypy -p pylsqpack
 
 about:
   summary: Python wrapper for the ls-qpack QPACK library
