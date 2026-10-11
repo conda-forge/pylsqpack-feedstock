@@ -32,18 +32,20 @@ requirements:
         - python
   host:
     - pip
-    - python
     - setuptools
     - if: is_abi3
       then:
         - python ${{ python_min }}.*
         - python-abi3
+      else:
+        - python
   run:
-    - python
     - if: is_abi3
       then:
-        - python ${{ python_min }}.*
+        - python >=${{ python_min }}
         - python-abi3
+      else:
+        - python
 
 tests:
   - package_contents:
