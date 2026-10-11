@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "0.3.24"
+  version: "1.0.0"
   python_check_max: "3.14"
   abi3_ext: ${{ "pyd" if win else "abi3.so" }}
   unix_sp_dir: |-
@@ -19,7 +19,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/p/pylsqpack/pylsqpack-${{ version }}.tar.gz
-  sha256: 8ec455f44614228f89e38d40c1b1e37895620e20ec6b21e3b562fa8b79a23890
+  sha256: 4674adc2c833c1c70a36454f5774e9def94fc3109e4a8464d804af2a2030957a
 
 build:
   number: 0
