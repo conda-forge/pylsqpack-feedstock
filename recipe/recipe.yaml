@@ -49,7 +49,7 @@ tests:
   - package_contents:
       strict: true
       files:
-        - etc/conda/test-files/pylsqpack
+        - etc/conda/test-files/pylsqpack/**
       site_packages:
         - pylsqpack/**
         - pylsqpack-${{ version }}.dist-info/**
