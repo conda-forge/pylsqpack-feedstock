@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "1.1.0"
+  version: "1.1.1"
   python_check_max: "3.14"
   cov_fail_under: "100"
 
@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/p/pylsqpack/pylsqpack-${{ version }}.tar.gz
-  sha256: 08bf266893dcaed817d72ac14506a095c97b309f68ae57a694699d186660450e
+  sha256: d20d920ccac8aac5ffa2c65fa2816b76f6d11c47b9b01145ad786fc2399c1b3b
 
 build:
   number: 0
